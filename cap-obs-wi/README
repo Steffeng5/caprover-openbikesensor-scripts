@@ -1,0 +1,8 @@
+Docker image example for PHP-FPM powered by NGINX
+
+Base Images:
+https://hub.docker.com/r/webdevops/php-nginx/
+
+
+Docs for the Image:
+http://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-nginx.html

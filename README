@@ -1,0 +1,16 @@
+# Dockerized OpenBikeSensor Scripts
+Source: https://github.com/openbikesensor/OpenBikeSensor-Scripts
+
+- 2 Docker Containers
+
+
+## obs-wi-python
+/obs-data/input
+/obs-data/visualization (json output -> same as input below)
+
+
+
+## obs-wi
+Volumes:
+/obs-uploads
+/app/json   (json input)
