@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Stop on any error
+set -e
+
+# Run collector unit tests
+./collector/vendor/bin/phpunit collector/tests
+
+# Test Dockerfile with clean build
+docker-compose -f docker-compose.test.yml stop && \
+docker-compose -f docker-compose.test.yml rm -f && \
+docker-compose -f docker-compose.test.yml build  --force-rm  --no-cache && \
+docker-compose -f docker-compose.test.yml run --rm sut
+
+# Success message
+printf "\n✅ All tests passed.\n\n"
