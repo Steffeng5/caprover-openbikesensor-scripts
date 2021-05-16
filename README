@@ -14,3 +14,22 @@ Source: https://github.com/openbikesensor/OpenBikeSensor-Scripts
 Volumes:
 /obs-uploads
 /app/json   (json input)
+
+## Development
+
+### Collector
+#### About
+The "collector" accepts uploaded files from an OpenBikeSensor and stores them
+on disk in the configured directory according to the environment variable
+`OBS_UPLOAD_DIR`.
+
+#### Running tests
+Install dependencies
+```shell
+$> composer install
+```
+
+Execute tests
+```shell
+$> ./vendor/bin/phpunit tests
+```
