@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+  app:
+    build: .
+
+  sut:
+    image: alpine:3
+    depends_on:
+      - app
+    command: >
+      sh -c "apk --no-cache add curl &&
+             curl --verbose --silent --fail \
+                  -H 'User-Agent: OBS/SOME_FIRMWARE_VERSION' \
+                  -H 'Authorization: OBSUserId SOME_API_KEY' \
+                  -F 'body=@/tmp/obsdata.csv' \
+                  'http://app:8080' 2>&1 | grep '201 Created'"
+    volumes:
+      - "./tests/fixtures/obsdata.csv:/tmp/obsdata.csv:ro"
