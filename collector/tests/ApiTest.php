@@ -62,6 +62,13 @@ class ApiTest extends TestCase {
       self::OBS_UPLOAD_DIR.'/SOME_API_KEY/2021-04-08T12.25.11-205e.obsdata.csv'
     );
   }
+
+  public function testHealthCheck() {
+    $response = self::$client->get('/api.php?healthcheck=true');
+
+    $this->assertEquals(204, $response->getStatusCode());
+    $this->assertEquals(['true'], $response->getHeader('OBS-System-Health'));
+  }
 }
 
 ?>
