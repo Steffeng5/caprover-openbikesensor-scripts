@@ -14,13 +14,15 @@ class Utils {
   }
 
   public static function clearDir(string $dir) {
-    $files = new RecursiveIteratorIterator(
-      new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS),
-      RecursiveIteratorIterator::CHILD_FIRST
-    );
+    if (is_dir($dir)) {
+      $files = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::CHILD_FIRST
+      );
 
-    foreach ( $files as $file ) {
-        $file->isDir() ?  rmdir($file) : unlink($file);
+      foreach ( $files as $file ) {
+          $file->isDir() ?  rmdir($file) : unlink($file);
+      }
     }
   }
 
