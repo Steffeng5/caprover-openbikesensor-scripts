@@ -3,12 +3,6 @@ function with_trailing_slash($path) {
     return rtrim($path, '/') . '/';
 }
 
-if ($_GET['healthcheck'] == 'true') {
-    header('OBS-System-Health: true');
-    http_response_code(204);
-    exit();
-}
-
 $HTTP_USER_AGENT = $_SERVER["HTTP_USER_AGENT"];
 $AUTH = $_SERVER["HTTP_AUTHORIZATION"];
 $OBS_UPLOAD_DIR = with_trailing_slash(
