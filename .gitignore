@@ -1,1 +1,8 @@
+# Managed dependencies
+/collector/vendor
+
+# Misc
+/tmp
+
+# Development tools
 .idea
